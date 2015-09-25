@@ -1,0 +1,117 @@
+---
+layout: default
+title: "The Language of The Universe: Patterns and Sequences"
+tagline: Follow Your Heart
+description: Machine learning, Data mining, AI, Programming and Fun
+---
+
+{% include JB/setup %}
+
+{% assign categories_list = site.categories %}
+
+{% if THEME == "ntc_card" %}
+
+{% unless categories_list == empty %}
+<div class="container">
+    <div class="separator"></div>
+    <div class="tag-list">
+        {% if categories_list.first[0] == null %}
+            {% for category in categories_list %}
+                <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category | downcase |split: " " |join: "-" }}" class="cate">{{ category | join: "/" }}[{{ categories_list[category].size }}]</a>
+            {% endfor %}
+        {% else %}
+            {% for category in categories_list %}
+                <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] | downcase |split: " " |join: "-" }}" class="cate">{{ category[0] | join: "/" }}[{{ category[1].size }}]</a>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="tag-post-list">
+        {% if categories_list.first[0] == null %}
+            {% for category in categories_list %}
+                <a name="{{category | join: "/"}}"></a>
+                <h2 class="cate">{{ category | join: "/" }} ({{ categories_list[category].size }})</h2>
+
+                {% assign pages_list = categories_list[category] %}
+
+                <ul>
+                {% for pg in pages_list %}
+                    <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
+                {% endfor %}
+                </ul>
+
+                {% assign pages_list = nil %}
+            {% endfor %}
+        {% else %}
+            {% for category in categories_list %}
+                <a name="{{category[0] | join: "/"}}"></a>
+                <h2 class="cate">{{ category[0] | join: "/" }} ({{ category[1].size }})</h2>
+
+                {% assign pages_list = category[1] %}
+
+                <ul>
+                {% for pg in pages_list %}
+                    <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
+                {% endfor %}
+                </ul>
+
+                {% assign pages_list = nil %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endunless %}
+
+{% else if THEME == "ntc_old" %}
+<div class="page-header"><h1>Categories</h1></div>
+
+{% unless categories_list == empty %}
+<ul class="tag_box inline">
+{% if categories_list.first[0] == null %}
+    {% for category in categories_list %}
+        <li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category | downcase |split: " " |join: "-" }}" class="cate">{{ category | join: "/" }}[{{ categories_list[category].size }}]</a></li>
+    {% endfor %}
+{% else %}
+    {% for category in categories_list %}
+        <li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] | downcase |split: " " |join: "-" }}" class="cate">{{ category[0] | join: "/" }}[{{ category[1].size }}]</a></li>
+    {% endfor %}
+{% endif %}
+</ul>
+
+{% if categories_list.first[0] == null %}
+    {% for category in categories_list %}
+        <a name="{{category | join: "/"}}"></a>
+        <h2 class="cate">{{ category | join: "/" }} ({{ categories_list[category].size }})</h2>
+
+        {% assign pages_list = categories_list[category] %}
+
+        <ul>
+        {% for pg in pages_list %}
+            <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
+        {% endfor %}
+        </ul>
+
+        {% assign pages_list = nil %}
+    {% endfor %}
+{% else %}
+    {% for category in categories_list %}
+        <a name="{{category[0] | join: "/"}}"></a>
+        <h2 class="cate">{{ category[0] | join: "/" }} ({{ category[1].size }})</h2>
+
+        {% assign pages_list = category[1] %}
+
+        <ul>
+        {% for pg in pages_list %}
+            <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
+        {% endfor %}
+        </ul>
+
+        {% assign pages_list = nil %}
+    {% endfor %}
+{% endif %}
+{% endunless %}
+
+{% endif %}
+
+{% assign categories_list = nil %}
+<script type="text/javascript">fixupText("cate");</script>

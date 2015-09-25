@@ -1,0 +1,51 @@
+---
+layout: default
+title: "The Language of The Universe: Patterns and Sequences"
+tagline: Follow Your Heart
+description: Machine learning, Data mining, AI, Programming and Fun
+---
+
+{% include JB/setup %}
+
+{% if THEME == "ntc_card" %}
+<div class="container">
+    <div class="separator"></div>
+    <div class="tag-list">
+        {% for series_post in site.series %}
+            {% assign s_cnt = '0' %}
+            {% for site_post in site.posts %}
+                {% unless site_post.series == empty.%}
+                    {% if site_post.series == series_post.title %}
+                        {% capture s_cnt %}{{ s_cnt | plus: '1' }}{% endcapture %}
+                    {% endif %}
+                {% endunless %}
+            {% endfor %}
+            {% if s_cnt == '0' %}
+                <a href="{{ series_post.url | downcase | split: " " | join: "-"}}">{{ series_post.title}}<sup></sup></a>
+            {% else %}
+                <a href="{{ series_post.url | downcase | split: " " | join: "-"}}">{{ series_post.title}}<sup>{{ s_cnt}}</sup></a>
+            {% endif %}
+    	{% endfor %}
+    </div>
+</div>
+{% else if THEME == "ntc_old" %}
+<div class="page-header"><h1>Series</h1></div>
+
+<ul class="tag_box inline">
+    {% for series_post in site.series %}
+        {% assign s_cnt = '0' %}
+        {% for site_post in site.posts %}
+            {% unless site_post.series == empty.%}
+                {% if site_post.series == series_post.title %}
+                    {% capture s_cnt %}{{ s_cnt | plus: '1' }}{% endcapture %}
+                {% endif %}
+            {% endunless %}
+        {% endfor %}
+        {% if s_cnt == '0' %}
+        <li><a href="{{ series_post.url | downcase | split: " " | join: "-"}}">{{ series_post.title}}<span></span></a></li>
+        {% else %}
+        <li><a href="{{ series_post.url | downcase | split: " " | join: "-"}}">{{ series_post.title}}<span>{{ s_cnt}}</span></a></li>
+        {% endif %}
+	{% endfor %}
+</ul>
+{% endif %}

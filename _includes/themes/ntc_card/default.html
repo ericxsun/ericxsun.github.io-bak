@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+
+    {% if page.keywords %}
+    <meta name="keywords" content="{{ page.keywords | join: "," }}">
+    {% endif %}
+
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+    {% endif %}
+
+    <meta name="author" content="{{ site.author.name }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ BASE_PATH }}/favicon.ico">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{ site.JB.rss_path }}">
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="{{ site.JB.atom_path }}">
+
+    <!-- Styles -->
+    <link href="{{ ASSET_PATH }}/fonts/fonts.css" type="text/css" rel="stylesheet" media="all">
+    <link href="{{ ASSET_PATH }}/styles/normalize.css" type="text/css" rel="stylesheet" media="all">
+    <link href="{{ ASSET_PATH }}/styles/skeleton.css" type="text/css" rel="stylesheet" media="all">
+    <link href="{{ ASSET_PATH }}/styles/pygments.css" type="text/css" rel="stylesheet" media="all">
+    <link href="{{ ASSET_PATH }}/styles/customize.css" type="text/css" rel="stylesheet" media="all">
+
+    <!-- Scripts -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [ ["$$","$$"], ["\\[", "\\]"] ],
+                processEscapes: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'] // removed 'code' entry
+            },
+            TeX: {
+                equationNumbers: {
+                    autoNumber: ["AMS"],
+                    useLabelIds: true
+                },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            },
+            "HTML-CSS": {
+                linebreaks: {automatic: true}
+            },
+            SVG: {linebreaks: {automatic: true}}
+        });
+
+        MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!--<script type="text/javascript" src="{{ ASSET_PATH }}/js/MathJax.js"></script>-->
+    <script type="text/javascript" src="{{ ASSET_PATH }}/js/upperCase.js"></script>
+    <script type="text/javascript" src="{{ ASSET_PATH }}/js/jquery1.7.2.min.js"></script>
+</head>
+
+<body>
+    <div class="page-header container">
+        {% capture home_url %}{{ HOME_PATH | append: '/index.card.html' | replace: '//', '/' }}{% endcapture %}
+        <ul class="nav-left">
+            <li class="home"><a class="brand" href="{{ HOME_PATH }}" title="Back To Home"> {{ site.tagline }} </a></li>
+            <li{% if page.url == site.JB.archive_path %} class="desktop-only active"{% endif %}><a href="{{ site.JB.archive_path }}" title="Archive">Archive</a></li>
+            <li{% if page.url == site.JB.series_path %} class="desktop-only active"{% endif %}><a href="{{ site.JB.series_path }}" title="Series">Series</a></li>
+            <li{% if page.url == site.JB.categories_path %} class="desktop-only active"{% endif %}><a href="{{ site.JB.categories_path }}" title="Categories">Categories</a></li>
+            <li{% if page.url == site.JB.tags_path %} class="desktop-only active"{% endif %}><a href="{{ site.JB.tags_path }}" title="Tags">Tags</a></li>
+            <!-- <li{% if page.url == site.JB.notes_path %} class="desktop-only active"{% endif %}><a href="{{ site.JB.notes_path }}" title="Notes">Notes</a></li>
+            <li{% if page.url == site.JB.misc_path %} class="desktop-only active"{% endif %}><a href="{{ site.JB.misc_path }}" title="MISC">MISC</a></li> -->
+        </ul>
+        <ul class="nav-right">
+            <li class="divider-vertical"></li>
+
+            <li{% if page.url == site.JB.rss_path %} class="active"{% endif %}><a href="{{ site.JB.rss_path }}" title="Subscribe To RSS">Subscribe</a></li>
+            <li{% if page.url == site.JB.about_path %} class="active"{% endif %}><a href="{{ site.JB.about_path }}" title="About Me">About Me</a></li>
+        </ul>
+        <p class="tagline">The Language of The Universe: Patterns and Sequences</p>
+    </div>
+
+    {{ content }}
+
+    <div class="copyright">
+        &copy; 2009-{{ site.time | date: '%Y' }} <a href="mailto:{{ site.author.email }}" title="Send an email to me">{{ site.author.name }}</a> <small>with help from Jekyll Bootstrap, Ruby, Pandoc and Liquid</small>
+    </div>
+
+    {% include JB/analytics %}
+</body>
+</html>

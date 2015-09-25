@@ -1,0 +1,39 @@
+---
+layout: default
+title: "The Language of The Universe: Patterns and Sequences"
+tagline: Follow Your Heart
+description: Machine learning, Data mining, AI, Programming and Fun
+---
+
+{% include JB/setup %}
+
+<div class="container">
+	<div class="separator"></div>
+	<p>欢迎来到{{ site.tagline }}，这是由{{ site.author.name }}所维护的blog，主要记录一些机器学习、数据挖掘、程序设计以及各种技术和非技术的相关内容。如非特别指明，本站的文章遵循 <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 许可协议</a>。</p>
+</div>
+
+{% assign posts_list = site.posts %}
+{% for post in posts_list %}
+<div class="post-container">
+	<div class="post-content">
+		<div class="post-header">
+			<h2 class="title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+		</div>
+		<p>{{ post.content | strip_html | markdownify | truncate:300 }}</p>
+
+		<div class="read-more">
+			<a href="{{ post.url }}">&sim; Read More &sim;</a>
+		</div>
+	</div>
+</div>
+<div class="separator"></div>
+{% endfor %}
+{% assign posts_list = nil %}
+
+<div id="post-epilogue" class="container">
+	<div class="separator"></div>
+	<div class="archie-link">
+		<center><a href="{{ site.JB.archive_path }}">&laquo; Archive List &raquo;</a></center>
+	</div>
+	<div class="separator"></div>
+</div>

@@ -1,0 +1,26 @@
+<div class="page-header"><h1>{{ page.title }}</h1></div>
+
+<div class="row">
+	<div class="span8">
+		<div id="notes-content" class="notes-content">
+			{{ page.content }}
+		</div>
+	</div>
+
+	<div class="span4">
+        {% if page.toc %}
+		<div class="notes-toc">
+			<div class="well" style="padding: 8px 0;" id="toc-list">
+				<ul class="nav nav-list">
+					<li class="nav-header">Table of Contents</li>
+				</ul>
+			</div>
+		</div>
+        {% endif %}
+	</div>
+    {% if page.toc %}
+    <script>
+        addSpan4Toc($get("#notes-content"), $get("#toc-list"));
+    </script>
+    {% endif %}
+</div>

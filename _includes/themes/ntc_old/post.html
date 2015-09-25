@@ -1,0 +1,73 @@
+<div class="page-header"><h1>{{ page.title }}</h1></div>
+
+<div class="row">
+	<div class="span8">
+		<div id="post-content" class="post-content">
+			{{ content }}
+		</div>
+		<hr>
+	</div>
+	<div class="span4">
+        <div id="sidebar">
+            <h4>Published</h4>
+            <div class="date"><span>{{ page.date | date: "%Y-%m-%d" }}</span></div>
+
+            <br>
+            {% unless page.series == empty %}
+            {% assign s_cnt = '0' %}
+            {% for post in site.posts reversed %}
+            {% if post.series == page.series %}
+                {% capture s_cnt %}{{ s_cnt | plus: '1' }}{% endcapture %}
+            {% endif %}
+            {% endfor %}
+            <h4>Series</h4>
+            <ul class="tag_box">
+                {% for pg_series in page.series %}
+                    <li><a href="{{ BASE_PATH }}{{ site.JB.series_path }}#{{ pg_series | downcase |split: " " |join: "-" }}">{{ pg_series }}<span>{{ s_cnt }}</span></a></li>
+                {% endfor %}
+            </ul>
+            {% endunless %}
+
+            {% unless page.categories == empty %}
+            <h4>Categories</h4>
+            <ul class="tag_box">
+                {% for category in page.categories %}
+                    <li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category | downcase |split: " " |join: "-" }}" class="cate">{{ category }}[{{ site.categories[category].size }}]</a></li>
+                {% endfor %}
+                <script type="text/javascript">fixupText("cate");</script>
+            </ul>
+            {% endunless %}
+
+            {% unless page.tags == empty %}
+            <h4>Tags</h4>
+            <ul class="tag_box">
+                {% for tag in page.tags %}
+                    <li><a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}">{{ tag }}<span>{{ site.tags[tag].size }}</span></a></li>
+                {% endfor %}
+            </ul>
+            {% endunless %}
+
+            {% if page.toc %}
+            <br>
+
+            <div clas="notes-toc">
+                <div class="well" style="padding: 8px 0;" id="toc-list">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">TABLE OF CONTENTS</li>
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+	</div>
+
+	<div id="comments" class="span8">
+		{% include JB/comments %}
+	</div>
+
+    {% if page.toc %}
+    <script>
+        addSpan4Toc($get("#post-content"), $get("#toc-list"));
+    </script>
+    {% endif %}
+</div>

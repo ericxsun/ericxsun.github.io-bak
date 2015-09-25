@@ -1,0 +1,26 @@
+---
+layout: default
+title: "The Language of The Universe: Patterns and Sequences"
+tagline: Follow Your Heart
+description: Machine learning, Data mining, AI, Programming and Fun
+---
+
+{% include JB/setup %}
+
+<div class="page-header"><h1>MISC</h1></div>
+
+Here I record some of interesting books, papers, videos or musics I've got. If you get some related interesting stuff to share, you can email me directly ({{ site.author.email }}).
+
+<h2>Books</h2>
+<ul class="nav nav-pills">
+	{% for post in site.misc_book %}
+	<li><a href="{{ post.url }}">{{ post.title }}</a></li>
+	{% endfor %}
+</ul>
+
+<h2>Papers</h2>
+<ul class="nav nav-pills">
+	{% for post in site.misc_paper %}
+	<li><a href="{{ post.url }}">{{ post.title }}</a></li>
+	{% endfor %}
+</ul>

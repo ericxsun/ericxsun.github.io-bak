@@ -1,0 +1,33 @@
+---
+layout: default
+title: "The Language of The Universe: Patterns and Sequences"
+tagline: Follow Your Heart
+description: Machine learning, Data mining, AI, Programming and Fun
+---
+
+{% include JB/setup %}
+
+<div class="page-header"><h1>Notes</h1></div>
+
+Here I record some of my personal notes. Some of those might be helpful for others. But please be vigilant constantly that all the contents in this section may be highly biased by my personal preference. Some of the pages would be incomplete or will be updated from time to time. If you find some errors in the text or get some related interesting stuff to share, you can email me directly ({{ site.author.email }}).
+
+<h2>Machine Learning</h2>
+<ul class="nav nav-pills">
+	{% for post in site.notes_machine_learning %}
+	<li><a href="{{ post.url }}">{{ post.title }}</a></li>
+	{% endfor %}
+</ul>
+
+<h2>Programming</h2>
+<ul class="nav nav-pills">
+	{% for post in site.notes_programming %}
+	<li><a href="{{ post.url }}">{{ post.title }}</a></li>
+	{% endfor %}
+</ul>
+
+<h2>Projects</h2>
+<ul class="nav nav-pills">
+	{% for post in site.notes_projects %}
+	<li><a href="{{ post.url }}">{{ post.title }}</a></li>
+	{% endfor %}
+</ul>

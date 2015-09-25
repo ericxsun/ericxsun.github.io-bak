@@ -1,0 +1,64 @@
+<div class="post-container">
+	<div class="post-header">
+		<h2>{{ page.title }}</h2>
+		<div class="post-meta">
+			<span><img src="{{ ASSET_PATH  }}/images/icon-calendar.svg" width="12px">{{ page.date | date: "%Y-%m-%d" }}</span>
+			<span><img src="{{ ASSET_PATH  }}/images/icon-bubble.svg" width="12px"><a href="#disqus_thread">Leave a comment</a></span>
+			<span><img src="{{ ASSET_PATH  }}/images/icon-printer.svg" width="12px"><a href="">Printable Version</a></span>
+		</div>
+	</div>
+
+	<div class="post-content">
+		{{ content }}
+	</div>
+</div>
+
+<div class="post-epilogue container">
+	<div class="row">
+		<div class="one-third column">
+			<span>category</span>
+			{% unless page.categories == empty %}
+			<div class="tag-list">
+				{% for category in page.categories %}
+					<a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category | downcase |split: " " |join: "-" }}" class="cate">{{ category }}[{{ site.categories[category].size }}]</a>
+				{% endfor %}
+				<script type="text/javascript">fixupText("cate");</script>
+			</div>
+			{% endunless %}
+		</div>
+
+      	<div class="one-third column">
+        	<span>tagged in</span>
+        	{% unless page.tags == empty %}
+			<div class="tag-list">
+	            {% for tag in page.tags %}
+	            	<a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}">{{ tag }}<sup>{{ site.tags[tag].size }}</sup></a>
+	            {% endfor %}
+        	</div>
+			{% endunless %}
+      	</div>
+
+		<div class="one-third column">
+			<span>in series</span>
+			{% unless page.series == empty %}
+			{% assign s_cnt = '0' %}
+			{% for post in site.posts reversed %}
+			{% if post.series == page.series %}
+				{% capture s_cnt %}{{ s_cnt | plus: '1' }}{% endcapture %}
+			{% endif %}
+			{% endfor %}
+			<div class="tag-list">
+				{% for pg_series in page.series %}
+					<a href="{{ BASE_PATH }}{{ site.JB.series_path }}#{{ pg_series | downcase |split: " " |join: "-" }}">{{ pg_series }}<sup>{{ s_cnt }}</sup></a>
+				{% endfor %}
+			</div>
+			{% endunless %}
+		</div>
+	</div>
+</div>
+
+<div class="comment-container container">
+	<div id="disqus_thread"></div>
+
+	{% include JB/comments %}
+</div>

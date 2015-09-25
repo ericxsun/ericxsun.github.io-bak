@@ -1,0 +1,53 @@
+---
+layout: default
+title: "The Language of The Universe: Patterns and Sequences"
+tagline: Follow Your Heart
+description: Machine learning, Data mining, AI, Programming and Fun
+---
+
+{% include JB/setup %}
+
+<div class="page-header"><h1>{{ site.tagline }} <small>The Language of The Universe: Patterns and Sequences</small></h1></div>
+
+<div class="row">
+	<div class="span8">
+		<p>欢迎来到{{ site.tagline }}，这是由{{ site.author.name }}所维护的blog，主要记录一些机器学习、数据挖掘、程序设计以及各种技术和非技术的相关内容。如非特别指明，本站的文章遵循 <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0 许可协议</a>。</p>
+
+		{% assign posts_list = site.posts %}
+		{% for post in posts_list %}
+		<div class="post">
+			<h3 class="title">
+				<a href="{{ post.url }}">{{ post.title }}</a>
+				<span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+			</h3>
+
+			<p>{{ post.description}}</p>
+			<!--<p>{{ post.content | strip_html | truncate:300 }}</p>-->
+
+			<div class="more"><a href="{{ post.url }}" class="btn">read more...</a></div>
+		</div>
+		{% endfor %}
+		{% assign posts_list = nil %}
+		<hr />
+		<center><a href="{{ site.JB.archive_path }}">~~ Archive List ~~</a></center>
+	</div>
+
+	<div class="span4">
+		<div id="sidebar">
+			<!-- <div id="recentcomments" class="dsq-widget">
+				<h2 class="dsq-widget-title">Recent Comments</h2>
+				<script type="text/javascript" src=""></script>
+			</div> -->
+
+			<h2>Links</h2>
+			<ul class="nav nav-pills nav-stacked">
+				{% include widgets/links %}
+			</ul>
+
+			<h2>Repos</h2>
+			<ul class="nav nav-pills nav-stacked">
+				{% include widgets/repos %}
+			</ul>
+		</div>
+	</div>
+</div>

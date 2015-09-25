@@ -1,0 +1,21 @@
+<div class="post-container">
+	<div class="post-header">
+		<h2>{{ page.title }}</h2>
+	</div>
+
+	<div class="series-links">
+		<ol>
+		{% for post in site.posts %}
+		{% unless post.series == empty %}
+		{% if post.series == page.title %}
+			<li><a href="{{post.url | downcase |split: " " |join: "-"}}">{{ post.title }}</a></li>
+		{% endif %}
+		{% endunless %}
+		{% endfor %}
+		</ol>
+	</div>
+	<div class="post-content">
+		{{ page.content }}
+	</div>
+</div>
+<div class="separator"></div>
