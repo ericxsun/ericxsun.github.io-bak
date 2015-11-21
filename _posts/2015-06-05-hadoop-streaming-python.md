@@ -3,7 +3,7 @@ layout: post
 title: Hadoop Streaming Error And Solution When Using Python
 keywords: ["hadoop", "streaming", "python"]
 description: "hadoop streaming error when using python"
-categories: ["Technology"]
+categories: ["Tech"]
 tags: ["Hadoop Streaming", "Python"]
 ---
 

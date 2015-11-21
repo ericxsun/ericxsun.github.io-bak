@@ -3,7 +3,7 @@ layout: post
 title: linux shell shortcuts(持续更新)
 keywords: ["shell shortcuts"]
 description: "Bash shortcuts"
-categories: ["Technology"]
+categories: ["Tech"]
 tags: ["Linux", "Bash", "Shortcuts"]
 series: ""
 toc: true

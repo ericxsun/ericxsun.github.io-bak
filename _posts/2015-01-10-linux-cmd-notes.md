@@ -3,7 +3,7 @@ layout: post
 title: linux命令(持续更新)
 keywords: ["linux命令"]
 description: "linux命令使用实例"
-categories: ["Technology"]
+categories: ["Tech"]
 tags: ["Linux"]
 series: ""
 ---

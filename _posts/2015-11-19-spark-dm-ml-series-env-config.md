@@ -3,7 +3,7 @@ layout: post
 title: spark-DM-ML系列:环境配置
 keywords: ["spark", "配置"]
 description: "学习使用spark来进行数据分析挖掘。本文为基础环境配置"
-categories: ["ML"]
+categories: ["Machine Learning"]
 tags: ["spark"]
 ---
 

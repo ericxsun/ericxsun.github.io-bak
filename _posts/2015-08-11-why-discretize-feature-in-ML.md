@@ -3,7 +3,7 @@ layout: post
 title: (转)机器学习模型为什么要将特征离散化
 keywords: ["特征离散化", "机器学习"]
 description: "在工业界，很少直接将连续值作为特征喂给逻辑回归模型，而是将连续特征离散化为一系列0、1特征交给逻辑回归模型，这样做有什么好处？"
-categories: ["AI"]
+categories: ["Machine Learning"]
 tags: ["Cognition", "Manifold", "VR"]
 ---
 

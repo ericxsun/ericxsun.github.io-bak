@@ -3,7 +3,7 @@ layout: post
 title: Host ngrok on own server
 keywords: ["ngrok"]
 description: "Guide for run ngrok on one's own server"
-categories: ["Technology"]
+categories: ["Tech"]
 tags: ["Linux"]
 ---
 
