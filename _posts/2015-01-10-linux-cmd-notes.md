@@ -47,7 +47,12 @@ linux命令行下有很多工具，像sed, awk，sort等，能帮助我们快速
 			$awk '{gsub(/RE/, "", $?); print $?}'
 
 			$awk '{IGNORECASE=1 gsub(/RE/, "", $?); print $?}' 忽略大小写
+    - 正则匹配只含标点
+            
+            # 英文标点: [[:punct:]]
+            $echo ".%?" |awk '$1 ~ /^[[:punct:]]+$/{print $0}' #仅对英文有标点有效
 
+            # 中文标点: [！？｡。＂＃＄％＆＇（）＊＋，－／：；＜＝＞＠［＼］＾＿｀｛｜｝～｟｠｢｣､、〃》「」『』【】〔〕〖〗〘〙〚〛〜〝〞〟〰〾〿–—‘’‛“”„‟…‧﹏] 
 	- 大小转换 toupper, tolower
 
 			$awk '{print toupper($i)}'
