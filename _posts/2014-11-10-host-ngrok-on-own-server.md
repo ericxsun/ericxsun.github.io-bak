@@ -185,6 +185,7 @@ tunnels:
   tunnel_ssh:
     proto:
       tcp: 22
+    remote_addr: 9091
 
 $./ngrok -config=ngrok.yml start tunnel_name1 tunnel_name2 tunnel_ssh
 
@@ -196,7 +197,7 @@ $./ngrok -config=ngrok.yml -log=stdout start tunnel_name1 tunnel_name2 tunnel_ss
 ![Alt text](https://raw.githubusercontent.com/followyourheart/followyourheart.github.io/master/images/2014-11-10-host-ngrok-on-own-server-4.png)
 
 {% highlight bash %}
-ssh username@$NGROK_DOMAINN -p $PROT  # see the ngrok started connections tcp://NGROK_DOMAINN:PORT -> 127.0.0.1:22
+ssh username@$NGROK_DOMAINN -p 9091
 {% endhighlight %}
 
 ---
