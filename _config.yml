@@ -25,8 +25,8 @@ title : "The Language of The Universe: Patterns and Sequences"
 tagline: Follow Your Heart
 author :
   name : Eric x. sun
-  email : followyourheart1211@gmail.com
-  github : followyourheart
+  email : eric.x.sun@gmail.com
+  github : ericxsun
   feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
@@ -37,7 +37,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : https://followyourheart.github.io
+production_url : https://ericxsun.github.io
 #cdn_url :
 
 collections:
